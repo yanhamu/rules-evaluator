@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<classification>
+  <class name="configmations">
+    <or>
+      <rule property="subject" value="bank" />
+      <rule property="subject" value="rent" />
+    </or>
+  </class>
+  <class name="personal">
+    <or>
+      <rule property="from" value="ica"/>
+      <rule property="tag" value="friend"/>
+    </or>
+    <and>
+      <not>
+        <rule property="tag" value="important" />
+      </not>
+    </and>
+  </class>
+  <class name="important">
+    <rule property="tag" value="important" />
+    <rule property="age" value="730" operator=">" />
+  </class>
+</classification>
