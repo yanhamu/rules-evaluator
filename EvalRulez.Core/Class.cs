@@ -1,24 +1,19 @@
-﻿using EvalRulez.Core.Expressions;
-using System.Collections.Generic;
+﻿using EvalRulez.Core.FluentRule;
 
 namespace EvalRulez.Core
 {
-    public class Class
+    public class Class<T>
     {
         public string Name { get; set; }
-        public IExpression Expression { get; set; }
+        public IExpression<T> Expression { get; set; }
 
-        public Class(IExpression expression)
+        public Class(IExpression<T> expression, string name)
         {
             this.Expression = expression;
+            this.Name = name;
         }
 
-        public Class(IEnumerable<IExpression> expressions)
-        {
-            this.Expression = new And(expressions);
-        }
-
-        internal bool Evaluate(object evaluatedObject)
+        public bool Evaluate(T evaluatedObject)
         {
             return Expression.Evaluate(evaluatedObject);
         }

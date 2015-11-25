@@ -44,19 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HardCodedExample\AdultPersonRule.cs" />
-    <Compile Include="HardCodedExample\FemalePersonRule.cs" />
-    <Compile Include="HardCodedExample\HardCodedExample.cs" />
-    <Compile Include="HardCodedExample\MalePersonRule.cs" />
-    <Compile Include="HardCodedExample\Person.cs" />
-    <Compile Include="HardCodedExample\YoungPersonRule.cs" />
+    <Compile Include="FluentExample\FluentExample.cs" />
+    <Compile Include="FluentExample\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="HardCodedExample\RulesConfig.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EvalRulez.Core\EvalRulez.Core.csproj">

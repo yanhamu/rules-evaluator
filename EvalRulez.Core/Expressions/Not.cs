@@ -1,20 +1,22 @@
-﻿namespace EvalRulez.Core.Expressions
-{
-    public class Not : IExpression
-    {
-        private readonly IExpression expression;
+﻿using EvalRulez.Core.FluentRule;
 
-        public Not(IExpression expression)
+namespace EvalRulez.Core.Expressions
+{
+    public class Not<T> : IExpression<T>
+    {
+        private readonly IExpression<T> expression;
+
+        public Not(IExpression<T> expression)
         {
             this.expression = expression;
         }
 
-        public Not(IExpression[] expressions)
+        public Not(IExpression<T>[] expressions)
         {
-            this.expression = new And(expressions);
+            this.expression = new And<T>(expressions);
         }
 
-        public bool Evaluate(object evaluatedObject)
+        public bool Evaluate(T evaluatedObject)
         {
             return !expression.Evaluate(evaluatedObject);
         }

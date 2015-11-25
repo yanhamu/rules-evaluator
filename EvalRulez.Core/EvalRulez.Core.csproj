@@ -46,8 +46,11 @@
     <Compile Include="Expressions\And.cs" />
     <Compile Include="Expressions\Not.cs" />
     <Compile Include="Expressions\Or.cs" />
-    <Compile Include="Expressions\IExpression.cs" />
+    <Compile Include="Expressions\SimpleExpression.cs" />
+    <Compile Include="FluentRule\IExpression.cs" />
+    <Compile Include="FluentRule\Rule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FluentRule\RuleBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

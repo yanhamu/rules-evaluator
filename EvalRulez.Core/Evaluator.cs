@@ -2,16 +2,16 @@
 
 namespace EvalRulez.Core
 {
-    public class Evaluator
+    public class Evaluator<T>
     {
-        private readonly IEnumerable<Class> classes;
+        private readonly IEnumerable<Class<T>> classes;
 
-        public Evaluator(IEnumerable<Class> classes)
+        public Evaluator(IEnumerable<Class<T>> classes)
         {
             this.classes = classes;
         }
 
-        public Class Evaluate(object evaluatedObject)
+        public Class<T> Evaluate(T evaluatedObject)
         {
             foreach (var c in classes)
             {

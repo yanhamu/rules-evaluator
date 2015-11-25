@@ -1,20 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using EvalRulez.Core.FluentRule;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EvalRulez.Core.Expressions
 {
-    public class And : IExpression
+    public class And<T> : IExpression<T>
     {
-        public IEnumerable<IExpression> Expressions { get; set; }
+        IEnumerable<IExpression<T>> expressions;
 
-        public And(IEnumerable<IExpression> expression)
+        public And(IEnumerable<IExpression<T>> expression)
         {
-            this.Expressions = expression;
+            this.expressions = expression;
         }
 
-        public bool Evaluate(object evaluatedObject)
+        public And(IExpression<T> a, IExpression<T> b)
         {
-            return Expressions.All(e => e.Evaluate(evaluatedObject));
+            var expression = new List<IExpression<T>>();
+            expression.Add(a);
+            expression.Add(b);
+            this.expressions = expression;
+        }
+
+        public bool Evaluate(T evaluatedObject)
+        {
+            return expressions.All(e => e.Evaluate(evaluatedObject));
         }
     }
 }
