@@ -9,14 +9,16 @@ namespace EvalRulez.Core.Test.FluentExample
         [Test]
         public void Test()
         {
-            var c1 = Rule<Person>.When(p => p.Age > 20)
-                .And(p => p.Name != "Tomas")
-                .ClassifyAs("OldTomas");
-            var c2 = Rule<Person>.When(p => p.Age < 20).And(p => p.Name == "Ignac").ClassifyAs("young Ignac");
+            var evaluator = new Evaluator<Person>(
+                Rule<Person>.When(p => p.Age > 20).And(p => p.Name != "Tomas").ClassifyAs("OldTomas"),
+                Rule<Person>.When(p => p.Age < 20).And(p => p.Name == "Ignac").ClassifyAs("IgnacClass")
+                );
+
             var person = new Person() { Age = 10, Name = "Ignac" };
 
-            Assert.IsFalse(c1.Evaluate(person));
-            Assert.IsTrue(c2.Evaluate(person));
+            var c = evaluator.Evaluate(person);
+
+            Assert.AreEqual("IgnacClass", c.Name);
         }
     }
 }

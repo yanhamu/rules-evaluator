@@ -13,7 +13,7 @@ namespace EvalRulez.Core.FluentRule
             expression = new SimpleExpression<T>(func);
         }
 
-        public static Rule<T> When(Func<T,bool> expression)
+        public static Rule<T> When(Func<T, bool> expression)
         {
             return new Rule<T>(expression);
         }
@@ -24,9 +24,21 @@ namespace EvalRulez.Core.FluentRule
             return this;
         }
 
+        public Rule<T> And(Rule<T> rule)
+        {
+            this.expression = new And<T>(this.expression, rule.expression);
+            return this;
+        }
+
         public Rule<T> Or(Func<T, bool> expression)
         {
             this.expression = new Or<T>(this.expression, new SimpleExpression<T>(expression));
+            return this;
+        }
+
+        public Rule<T> Or(Rule<T> rule)
+        {
+            this.expression = new Or<T>(this.expression, rule.expression);
             return this;
         }
 

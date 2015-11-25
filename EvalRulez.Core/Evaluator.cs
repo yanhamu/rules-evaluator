@@ -6,7 +6,7 @@ namespace EvalRulez.Core
     {
         private readonly IEnumerable<Class<T>> classes;
 
-        public Evaluator(IEnumerable<Class<T>> classes)
+        public Evaluator(params Class<T>[] classes)
         {
             this.classes = classes;
         }
